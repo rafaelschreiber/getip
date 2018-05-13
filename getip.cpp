@@ -25,17 +25,15 @@ void checkCurl(){
 
 void delIP(){
     system("rm -f ~/.ip.tmp 2>&1");
-    return;
 }
 
 
 void createIP(){
-    int statuscode = system("curl -s ipinfo.io/ip > ~/.ip.tmp 2>&1");
-    if (statuscode != 0){
+    int status = system("curl -s ipinfo.io/ip > ~/.ip.tmp 2>&1");
+    if (status != 0){
         printf("Cant establish connection\n");
         exit(1);
     }
-    return;
 }
 
 
@@ -45,6 +43,7 @@ string getIP(){
     ifstream ipFile(path);
     string ip;
     ipFile >> ip;
+    ipFile.close();
     return ip;
 }
 
