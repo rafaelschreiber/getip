@@ -29,7 +29,7 @@ void delIP(){
 
 
 void createIP(){
-    int status = system("curl -s ipinfo.io/ip > ~/.ip.tmp 2>&1");
+    int status = system("curl -s \"https://api.ipify.org/?format=text\" > ~/.ip.tmp 2>&1");
     if (status != 0){
         printf("Cant establish connection\n");
         exit(1);
